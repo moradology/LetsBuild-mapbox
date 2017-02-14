@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Let's Build</title>
+  <!-- CSS Imports -->
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.16.0/mapbox-gl-draw.css' type='text/css'/>
+  <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' type='text/css'/>
+  <link rel='stylesheet' href='css/main.css' type='text/css'/>
+</head>
+<body>
+
+  <!-- Map -->
+  <div class='map' id="map"></div>
+
+  <!--Left Panel-->
+  <div class='left-panel'>
+    <div class='left-panel-top'>
+      <h3>Instructions:</h3>
+      <p>
+        <span class='head'>Step 1: Draw and Measure!</span><br>
+        Draw lines and polygons to measure your site and footprint.<br><br>
+        You can calculate everything and redraw to enhance the project.<br>
+        <span class='note'>*Your drawbox is on the top-right corner.</span><br><br>
+        <span class='head'>Step 2: Imagine and ...... WOW!</span><br>
+        Press the height of your building and see how it works with the environment!<br>
+        <span class='note'>*You can always turn other buildings on/off by pressing the layer button.<span><br>
+          <br>
+          <p>Building Height: <input id="height" type="number" value=""> feet</p>
+        </p>
+        <div id='calculated'></div>
+      </div>
+
+      <div class='left-panel-bottom'>
+        <br>
+        <br>
+        <button class='panel-btn' id="calculate">Calculate It!</button>
+        <button class='panel-btn' id='draw'>Let's Build!</button>
+      </div>
+    </div>
+
+    <!-- Layer toggle -->
+    <div class='layer-panel'>
+      <button class='panel-btn' id='toggle'>3D Buildings</button>
+      <button class='panel-btn' id='redraw'>Redraw Buildings</button>
+    </div>
+
+    <!-- Javascript Imports -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.16.0/mapbox-gl-draw.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <!-- Javascript Code: executed in the order of import -->
+    <script src="js/setup.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+  </html>
