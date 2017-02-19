@@ -70,7 +70,7 @@ var drawBuilding = function() {
 };
 
 // hide 3D layer
-var hideLayer = function(e) {
+var hide3DLayer = function(e) {
   var offLayerId = '3d-buildings';
   var visibility = map.getLayoutProperty(offLayerId, 'visibility');
   if (map.getLayoutProperty(offLayerId, 'visibility') === 'visible') {
@@ -79,3 +79,46 @@ var hideLayer = function(e) {
     map.setLayoutProperty(offLayerId, 'visibility', 'visible');
   }
 };
+
+
+// add realtime SEPTA data
+var fetchBus = function(e) {
+    $.ajax("https://cors-anywhere.herokuapp.com/http://www3.septa.org/hackathon/TransitViewAll/")
+    .done(function(data){
+      var coordsList = [];
+      _.each(data, function(datum){
+        _.each(datum, function(datum){
+          _.each(datum, function(datum){
+            _.each(datum, function(datum){
+              coordsList.push([datum.lng, datum.lat]);
+            });
+          });
+        });
+      });
+
+      var ptSets = turf.multiPoint(coordsList);
+      map.getSource('septa').setData(ptSets);
+      map.addLayer({
+        "id": "septa",
+        "source": "septa",
+        "type": "symbol",
+        'minzoom': 11,
+        "layout": {
+            "icon-image": "bus-15",
+            "icon-allow-overlap": true
+        }
+      });
+    });
+  };
+  //
+  // // hide septa layer
+  // var hideSeptaLayer = function(e) {
+  //   var offLayerId = 'septa';
+  //   var visibility = map.getLayoutProperty(offLayerId, 'visibility');
+  //   if (map.getLayoutProperty(offLayerId, 'visibility') === 'visible') {
+  //     map.setLayoutProperty(offLayerId, 'visibility', 'none');
+  //   } else {
+  //     map.setLayoutProperty(offLayerId, 'visibility', 'visible');
+  //
+  //   }
+  // };

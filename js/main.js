@@ -8,5 +8,11 @@ $('button#draw').click(function() {
 });
 
 $('button#toggle').click(function() {
-  hideLayer();
+  hide3DLayer();
 });
+
+
+//
+// $("#septa").click(function() {
+//   hideSeptaLayer();
+// });

@@ -60,13 +60,27 @@ map.on('load', function() {
         'coordinates': [[[0,0],
         [0,0],
         [0,0]]]}
-      }
-    });
-
-    // add control to the map.
-    // change the order to define the different position
-    map.addControl(new mapboxgl.ScaleControl({unit: 'imperial'}),'bottom-right');
-    map.addControl(new mapboxgl.GeolocateControl(),'bottom-right');
-    map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
-    map.addControl(draw,'top-right');
+    }
   });
+
+  // add control to the map.
+  // change the order to define the different position
+  map.addControl(new mapboxgl.ScaleControl({unit: 'imperial'}),'bottom-right');
+  map.addControl(new mapboxgl.GeolocateControl(),'bottom-right');
+  map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
+  map.addControl(draw,'top-right');
+
+  //predefine a polygon source to add real-time SEPTA points
+  map.addSource('septa', {
+    "type": "geojson",
+    "data": {
+      "type": "Point",
+      "coordinates": [0,0]
+    }
+  });
+
+  var int = setInterval(function(){
+    fetchBus();
+  }, 3000);
+
+});
