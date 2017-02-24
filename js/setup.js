@@ -78,6 +78,16 @@ map.on('load', function() {
       "coordinates": [0,0]
     }
   });
+    map.addLayer({
+      "id": "septa",
+      "source": "septa",
+      "type": "symbol",
+      'minzoom': 11,
+      "layout": {
+          "icon-image": "bus-15",
+          "icon-allow-overlap": true
+      }
+    });
 
   var int = setInterval(function(){
     fetchBus();

@@ -98,16 +98,6 @@ var fetchBus = function(e) {
 
       var ptSets = turf.multiPoint(coordsList);
       map.getSource('septa').setData(ptSets);
-      map.addLayer({
-        "id": "septa",
-        "source": "septa",
-        "type": "symbol",
-        'minzoom': 11,
-        "layout": {
-            "icon-image": "bus-15",
-            "icon-allow-overlap": true
-        }
-      });
     });
   };
   //
